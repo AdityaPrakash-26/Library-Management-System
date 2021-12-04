@@ -1,13 +1,17 @@
 // Requiring module
 const express = require('express');
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost:27017/books', { useNewUrlParser: true , useUnifiedTopology: true })
+    .then(() => console.log('MongoDB Connected...'))
+    .catch(err => console.log(err));
 
 // Creating express object
 const app = express();
 
 // Handling GET request
 app.get('/', (req, res) => {
-    res.send('A simple Node App is running on this server')
-    res.end()
+    res.sendFile(__dirname + '/public/index.html');
 })
 
 // Port Number
