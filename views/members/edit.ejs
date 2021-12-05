@@ -14,55 +14,27 @@
         <h3>Currently editing: <%=member.name%></h3>
         <form action = "/members/<%=member._id%>?_method=PUT" method = "POST">
             <div>
-                <label for = "title">Title:</label>
-                <input type="text" id = "title" name = "member[title]" value="<%=member.title %>">
+                <label for = "name">Name:</label>
+                <input type="text" id = "name" name = "member[name]" value = "<%=member.name %>">
             </div>
             <div>
-                <label for = "authors">Authors:</label>
-                <input type="text" id = "authors" name = "member[authors]" value="<%=member.authors %>">
+                <label for = "age">Age:</label>
+                <input type="number" id = "age" name = "member[age]" value = "<%=member.age %>">
             </div>
             <div>
-                <label for = "average_rating">Average Rating:</label>
-                <input type="text" id = "average_rating" name = "member[average_rating]" value="<%=member.average_rating %>">
+                <label for = "phone">Phone No.:</label>
+                <input type="number" id = "phone" name = "member[phone]" value = "<%=member.phone %>">
             </div>
             <div>
-                <label for = "isbn">ISBN:</label>
-                <input type="text" id = "isbn" name = "member[isbn]" value="<%=member.isbn %>">
-            </div>
-            <div>
-                <label for = "isbn13">ISBN13:</label>
-                <input type="text" id = "isbn13" name = "member[isbn13]" value="<%=member.isbn13 %>">
-            </div>
-            <div>
-                <label for = "language_code">Language Code:</label>
-                <input type="text" id = "language_code" name = "member[language_code]" value="<%=member.language_code %>">
-            </div>
-            <div>
-                <label for = "num_pages">Number of Pages:</label>
-                <input type="number" id = "num_pages" name = "member[num_pages]" value="<%=member.num_pages %>">
-            </div>
-            <div>
-                <label for = "ratings_count">Number of Ratings:</label>
-                <input type="number" id = "ratings_count" name = "member[ratings_count]" value="<%=member.ratings_count %>">
-            </div>
-            <div>
-                <label for = "text_reviews_count">Number of Text Reviews:</label>
-                <input type="number" id = "text_reviews_count" name = "member[text_reviews_count]" value="<%=member.text_reviews_count %>">
-            </div>
-            <div>
-                <label for = "publication_date">Date Published:</label>
-                <input type="date" id = "publication_date" name = "member[publication_date]" value="<%=member.publication_date %>">
-            </div>
-            <div>
-                <label for = "publisher">Publisher:</label>
-                <input type="text" id = "publisher" name = "member[publisher]" value="<%=member.publisher %>">
+                <label for = "debt">Debt:</label>
+                <input type="number" id = "debt" name = "member[debt]" value = "<%=member.debt %>">
             </div>
 
             <div class="col-md-6">
                 <button class="btn btn-success btn-lg btn-block">Update Member</button>
             </div>
             <div class="col-md-6">
-                <a href="/memberss/<%=member._id%>" class="btn btn-primary btn-lg btn-block">Go Back</a>
+                <a href="/members/<%=member._id%>" class="btn btn-primary btn-lg btn-block">Go Back</a>
             </div>
         </form>
     </div>

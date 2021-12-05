@@ -88,18 +88,19 @@ app.post('/members', async(req, res) => {
 
 app.get('/members/:id', async (req, res) => {
     const member = await Member.findById(req.params.id);
+
     res.render(__dirname + '/views/members/show.ejs', {member});
 })
 
 app.get('/members/:id/edit', async (req, res) => {
     const member = await Member.findById(req.params.id);
-    res.render(__dirname + '/views/member/edit.ejs', {member});
+    res.render(__dirname + '/views/members/edit.ejs', {member});
 })
 
 app.put('/members/:id', async (req, res) => {
     const { id } = req.params;
     const member = await Member.findByIdAndUpdate(id, { ...req.body.member});
-    res.redirect(`/books/${member._id}`);
+    res.redirect(`/members/${member._id}`);
 })
 
 app.delete('/members/:id', async (req, res) => {
