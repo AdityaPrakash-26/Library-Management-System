@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Add Member</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    </head>
+    <body>
+    <div class = "container">
+        <form action = "/members" method = "POST">
+            <div>
+                <label for = "title">Title:</label>
+                <input type="text" id = "title" name = "member[title]">
+            </div>
+            <div>
+                <label for = "authors">Authors:</label>
+                <input type="text" id = "authors" name = "member[authors]">
+            </div>
+            <div>
+                <label for = "average_rating">Average Rating:</label>
+                <input type="text" id = "average_rating" name = "member[average_rating]">
+            </div>
+            <div>
+                <label for = "isbn">ISBN:</label>
+                <input type="text" id = "isbn" name = "member[isbn]">
+            </div>
+            <div>
+                <label for = "isbn13">ISBN13:</label>
+                <input type="text" id = "isbn13" name = "member[isbn13]">
+            </div>
+            <div>
+                <label for = "language_code">Language Code:</label>
+                <input type="text" id = "language_code" name = "member[language_code]">
+            </div>
+            <div>
+                <label for = "num_pages">Number of Pages:</label>
+                <input type="number" id = "num_pages" name = "member[num_pages]">
+            </div>
+            <div>
+                <label for = "ratings_count">Number of Ratings:</label>
+                <input type="number" id = "ratings_count" name = "member[ratings_count]">
+            </div>
+            <div>
+                <label for = "text_reviews_count">Number of Text Reviews:</label>
+                <input type="number" id = "text_reviews_count" name = "member[text_reviews_count]">
+            </div>
+            <div>
+                <label for = "publication_date">Date Published:</label>
+                <input type="date" id = "publication_date" name = "member[publication_date]">
+            </div>
+            <div>
+                <label for = "publisher">Publisher:</label>
+                <input type="text" id = "publisher" name = "member[publisher]">
+            </div>
+
+            <div class="col-md-4">
+                <button class="btn btn-success btn-lg btn-block">Create member</button>
+            </div>
+            <div class="col-md-4">
+                <a href="/members" class="btn btn-primary btn-lg btn-block">Back to member List</a>
+            </div>
+            <div class="col-md-4">
+                <a href="/" class="btn btn-primary btn-lg btn-block">Back to Homepage</a>
+            </div>
+        </form>
+    </div>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Member List</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    </head>
+    <body>
+        <body class="d-flex text-white bg-dark">
+            <div class = "container">
+                <h1>Welcome to the Member list.</h1>
+                <h3>Here you can see all the members of the library.</h3>
+                <ul>
+                    <% for(let member of members){%>
+                        <li><a href ="/members/<%= member._id %>"><%= member.name %></a></li>
+                    <% }%>
+                </ul>
+                <div class="col-md-6">
+                    <a href="/members/new" class="btn btn-success btn-lg btn-block">Add a new member</a>
+                </div>
+                <div class="col-md-6">
+                    <a href="/" class="btn btn-primary btn-lg btn-block">Go back</a>
+                </div>
+            </div>
+        </body>
+    </body>
+</html>
