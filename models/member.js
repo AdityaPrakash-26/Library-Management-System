@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
+const Book = require('./models/book');
 
 const MemberSchema = mongoose.Schema({
-    memberID: Number,
     name: String,
     age: Number,
-    debt: Number
+    debt: Number,
+    books: [Book.schema]
 });
 
 const Member = mongoose.model('Member', MemberSchema);

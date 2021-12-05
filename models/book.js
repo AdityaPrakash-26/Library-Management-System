@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 const BookSchema = mongoose.Schema({
-    bookID: Number,
     title: String,
     authors: String,
     average_rating: Number,
