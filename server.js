@@ -97,6 +97,74 @@ app.get('/members/:id/edit', async (req, res) => {
     res.render(__dirname + '/views/members/edit.ejs', {member});
 })
 
+app.get('/members/:id/issue', async (req, res) => {
+    const member = await Member.findById(req.params.id);
+    const books = await Book.find({});
+    res.render(__dirname + '/views/members/issue.ejs', {member, books});
+})
+
+app.get('/members/:id/return', async (req, res) => {
+    const member = await Member.findById(req.params.id);
+    const books = await Book.find({});
+    res.render(__dirname + '/views/members/return.ejs', {member, books});
+})
+
+app.put('/members/:id/issue', async (req, res) => {
+    // // get the chosen book
+    // const book = await Book.findById(req.body.book);
+    // // get the member
+    // const member = await Member.findById(req.params.id);
+    // // add the book to the member
+    // member.books.push(book);
+    // // save the member
+    // await member.save();
+    // // subtract the book from the library
+    // book.quantity -= 1;
+    // await book.save();
+    // // redirect to the member's show page
+    // res.redirect(`/members/${member._id}`);
+
+    // get the list of chosen books
+    const books = req.body.books;
+    // get the member
+    const member = await Member.findById(req.params.id);
+    // loop through the books
+    for (let i = 0; i < books.length; i++) {
+        // get the book
+        const book = await Book.findById(books[i]);
+        // add the book to the member
+        member.books.push(book);
+        // subtract the book from the library
+        book.quantity -= 1;
+        await book.save();
+    }
+    // save the member
+    await member.save();
+    // redirect to the member's show page
+    res.redirect(`/members/${member._id}`);
+})
+
+app.put('/members/:id/return', async (req, res) => {
+    // get the list of chosen books
+    const books = req.body.books;
+    // get the member
+    const member = await Member.findById(req.params.id);
+    // loop through the books
+    for (let i = 0; i < books.length; i++) {
+        // get the book
+        const book = await Book.findById(books[i]);
+        // remove the book from the member
+        member.books.pull(book);
+        // add the book back to the library
+        book.quantity += 1;
+        await book.save();
+    }
+    // save the member
+    await member.save();
+    // redirect to the member's show page
+    res.redirect(`/members/${member._id}`);
+})
+
 app.put('/members/:id', async (req, res) => {
     const { id } = req.params;
     const member = await Member.findByIdAndUpdate(id, { ...req.body.member});

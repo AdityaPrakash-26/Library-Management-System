@@ -11,7 +11,8 @@ const BookSchema = mongoose.Schema({
     ratings_count: Number,
     text_reviews_count: Number,
     publication_date: String,
-    publisher: String
+    publisher: String,
+    quantity: {type: Number, default: 1}
 });
 
 const Book = mongoose.model('Book', BookSchema);

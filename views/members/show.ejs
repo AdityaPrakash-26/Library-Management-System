@@ -1,47 +1,70 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Member List</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    </head>
-    <body>
-        <div class = "container">
-            <h1>Details:</h1>
-            <h3>Name: <%=member.name%></h3>
-            <h3>Age: <%=member.age%></h3>
-            <h3>Phone No.: <%=member.phone%></h3>
-            <h3>Debt: <%=member.debt%></h3>
-            <h3>Books currently held:</h3>
-            <!-- if books are held, print the books -->
-            <ul>
-                <% member.books.forEach(function(book){ %>
-                    <li><%=book.title%></li>
-                <% }); %>
-            </ul>
 
-            <!-- if no books are held -->
-            <% if(member.books.length == 0){ %>
-                <h3>No books currently held</h3>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Member List</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Details:</h1>
+        <h3>Name: <%=member.name%>
+        </h3>
+        <h3>Age: <%=member.age%>
+        </h3>
+        <h3>Phone No.: <%=member.phone%>
+        </h3>
+        <h3>Debt: <%=member.debt%>
+        </h3>
+        <h3>Books currently held:</h3>
+        <!-- if books are held, print the books -->
+        <ul>
+            <% member.books.forEach(function(book){ %>
+                <li>
+                    <%=book.title%>
+                </li>
+                <% }); %>
+        </ul>
+
+        <!-- if no books are held -->
+        <% if(member.books.length==0){ %>
+            <h3>No books currently held</h3>
             <% } %>
 
-    
-            <div class="col-md-3">
-                <a href="/members/<%=member._id%>/edit" class="btn btn-warning btn-lg btn-block">Edit</a>
-            </div>
-            <div class="col-md-3">
-                <a href="/members" class="btn btn-primary btn-lg btn-block">Go back</a>
-            </div>
-    
-            <!-- button to delete the member -->
-            <div class="col-md-3">
-                <form action = "/members/<%=member._id%>?_method=DELETE" method = "POST">
-                    <button class="btn btn-danger btn-lg btn-block">Delete this member</button>
-                </form>
-            </div>
-        </div>
-    </body>
+                <div class="container">
+                    <div class="row">
+                        <h3>Member Actions</h3>
+                        <div class="col-md-3">
+                            <a href="/members/<%=member._id%>/edit" class="btn btn-warning btn-lg btn-block">Edit</a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="/members" class="btn btn-primary btn-lg btn-block">Go back</a>
+                        </div>
+                        <!-- button to delete the member -->
+                        <div class="col-md-3">
+                            <form action="/members/<%=member._id%>?_method=DELETE" method="POST">
+                                <button class="btn btn-danger btn-lg btn-block">Delete this member</button>
+                            </form>
+                        </div>
+                    </div>
+                    <h2>Book actions:</h2>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <a href="/members/<%=member._id%>/issue" class="btn btn-primary btn-lg btn-block">Issue a
+                                book to the member</a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="/members/<%=member._id%>/return" class="btn btn-primary btn-lg btn-block">Return a book from the member</a>
+                        </div>
+                    </div>
+                </div>
+    </div>
+</body>
+
 </html>

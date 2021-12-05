@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Issue Book</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <body class="d-flex text-white bg-dark">
+        <div class="container">
+            <h1>Choose books to issue to <%=member.name%></h1>
+            <!-- If the quantity of a book is greater than one, display it as an option -->
+            <form action="/members/<%=member._id%>/issue?_method=PUT" method="POST">
+                <ul>
+                    <% for(let book of books) { %>
+                        <% if(book.quantity >= 1) { %>
+                            <li>
+                                <input type="checkbox" name="books[]" value="<%= book._id %>">
+                                <%= book.title %>
+                            </li>
+                        <% } %>
+                    <% } %>
+                </ul>
+                <div class="col-md-6">
+                    <button class="btn btn-success btn-lg btn-block">Issue Book</button>
+                </div>
+                <div class="col-md-6">
+                    <a href="/members/<%=member._id%>" class="btn btn-primary btn-lg btn-block">Go Back</a>
+                </div>
+            </form>
+    </body>
+</body>
+
+</html>

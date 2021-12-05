@@ -18,6 +18,10 @@
                         <li><a href ="/members/<%= member._id %>"><%= member.name %></a></li>
                     <% }%>
                 </ul>
+                <!-- if no members are present -->
+                <% if(members.length == 0){%>
+                    <h3>No members found. Click the button below to add one.</h3>
+                <% }%>
                 <div class="col-md-6">
                     <a href="/members/new" class="btn btn-success btn-lg btn-block">Add a new member</a>
                 </div>

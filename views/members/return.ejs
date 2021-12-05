@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Issue Book</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <body class="d-flex text-white bg-dark">
+        <div class="container">
+            <h1>Choose a book to take back from <%=member.name%></h1>
+            <!-- display all books the member currently has -->
+            <form action="/members/<%=member._id%>/return?_method=PUT" method="POST">
+                <ul>
+                    <% for (var i = 0; i < member.books.length; i++) { %>
+                    <li>
+                        <input type="checkbox" name="books[]" value="<%=member.books[i]._id%>">
+                        <%=member.books[i].title%>
+                    </li>
+                    <% } %>
+                </ul>
+                <div class="col-md-6">
+                    <button class="btn btn-success btn-lg btn-block">Return Book</button>
+                </div>
+                <div class="col-md-6">
+                    <a href="/members/<%=member._id%>" class="btn btn-primary btn-lg btn-block">Go Back</a>
+                </div>
+            </form>
+    </body>
+</body>
+
+</html>
