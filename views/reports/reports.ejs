@@ -11,20 +11,23 @@
     <body>
         <body class="d-flex text-white bg-dark">
             <div class = "container">
-                <h1>Welcome to the Transactions Screen.</h1>
-                <h3>Here you can see all the transactions that have occured in the library.</h3>
+                <h1>Welcome to the Reports Section.</h1>
+                <h3>Most Popular Books:</h3>
+                <% var booksList = []; %>
+                <!-- push the books which have been borrowed at least once -->
+                <% for(let book of books){ %>
+                    <% if(book.times_borrowed >= 1){ %>
+                        <% booksList.push(book); %>
+                    <% } %>
+                <% } %>
+
+                <% booksList.sort((a,b) => b.times_borrowed - a.times_borrowed); %>
+
                 <ul>
-                    <% for(let transaction of transactions){%>
-                        <li><%= transaction.message %></li>
-                    <% }%>
+                    <% for(let book of booksList){ %>
+                        <li> <a href="/books/<%=book._id%>"><%=book.title%></a> - Borrowed <%=book.times_borrowed%> times. </li>
+                    <% } %>
                 </ul>
-                <!-- if no transactions have been done -->
-                <% if(transactions.length == 0){%>
-                    <h3>No transactions found.</h3>
-                <% }%>
-                <div class="col-md-6">
-                    <a href="/transactions/delete" class="btn btn-danger btn-lg btn-block">Clear Transactions</a>
-                </div>
                 <div class="col-md-6">
                     <a href="/" class="btn btn-primary btn-lg btn-block">Go back</a>
                 </div>

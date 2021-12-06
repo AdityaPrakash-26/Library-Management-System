@@ -373,6 +373,13 @@ app.get('/transactions/delete', async(req, res) => {
 
 // TRANSACTION ROUTES END
 
+// REPORT ROUTES BEGIN
+
+app.get('/reports', async (req, res) => {
+    const books = await Book.find({});
+    res.render(__dirname + '/views/reports/reports.ejs', {books});
+})
+
 // AXIOS ROUTES BEGIN
 
 async function makeGetRequest(title, authors, isbn, publisher, page) {
