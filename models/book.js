@@ -12,7 +12,9 @@ const BookSchema = mongoose.Schema({
     text_reviews_count: Number,
     publication_date: String,
     publisher: String,
-    quantity: {type: Number, default: 1}
+    quantity_total: {type: Number, default: 1},
+    quantity_in_library: {type: Number, default: 1},
+    rent: {type: Number, default: 50}
 });
 
 const Book = mongoose.model('Book', BookSchema);

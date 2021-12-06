@@ -20,14 +20,25 @@
             <form action="/members/<%=member._id%>/issue?_method=PUT" method="POST">
                 <ul>
                     <% for(let book of books) { %>
-                        <% if(book.quantity >= 1) { %>
+                        <% if(book.quantity_in_library >= 1) { %>
                             <li>
-                                <input type="checkbox" name="books[]" value="<%= book._id %>">
-                                <%= book.title %>
+                                <!-- check if member already owns the book -->
+                                <% if(member.books.includes(book._id)) { %>
+                                    <input type="checkbox" name="books[]" value="<%=book._id%>" checked>
+                                <% } %>
+                                <% else if(500 - member.debt >= book.rent){%>
+                                    <input type="checkbox" name="books[]" value="<%= book._id %>">
+                                    <%= book.title %>
+                                <% } else {%>
+                                    <input type="checkbox" disabled name="books[]" value="<%= book._id %>">
+                                    <%= book.title %>
+                                    <span class="text-danger">(Debt limit exceeded)</span>
+                                <% } %> 
                             </li>
                         <% } %>
                     <% } %>
-                </ul>
+                        </ul>
+                
                 <div class="col-md-6">
                     <button class="btn btn-success btn-lg btn-block">Issue Book</button>
                 </div>

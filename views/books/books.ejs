@@ -11,16 +11,19 @@
     <body class="d-flex text-white bg-dark">
         <div class = "container">
             <h1>Welcome to the Book list.</h1>
-            <h3>Here you can see all the books currently in the library.</h3>
+            <h3>Here you can see all the books in the library.</h3>
             <ul>
                 <% for(let book of books){%>
                     <li><a href ="/books/<%= book._id %>"><%= book.title %></a></li>
                 <% }%>
             </ul>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <a href="/books/new" class="btn btn-success btn-lg btn-block">Add a new Book</a>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
+                <a href="/books/import" class="btn btn-primary btn-lg btn-block">Import Books</a>
+            </div>
+            <div class="col-md-4">
                 <a href="/" class="btn btn-primary btn-lg btn-block">Go back</a>
             </div>
         </div>

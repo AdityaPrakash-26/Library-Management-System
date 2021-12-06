@@ -17,12 +17,14 @@
         <h3>ISBN: <%=book.isbn%></h3>
         <h3>ISBN13: <%=book.isbn13%></h3>
         <h3>Language: <%=book.language_code%></h3>
-        <h3>Number of pages: <%=book.  num_pages%></h3>
+        <h3>Number of pages: <%=book.num_pages%></h3>
         <h3>Number of Ratings: <%=book.ratings_count%></h3> 
         <h3>Number of Text Reviews: <%=book.text_reviews_count%></h3> 
         <h3>Publication Date: <%=book.publication_date%></h3> 
         <h3>Publisher: <%=book.publisher%></h3> 
-        <h3>Quantity: <%=book.quantity%></h3> 
+        <h3>Total Quantity: <%=book.quantity_total%></h3> 
+        <h3>Quantity in Library: <%=book.quantity_in_library%></h3> 
+        <h3>Rent: <%=book.rent%></h3> 
 
         <div class="col-md-3">
             <a href="/books/<%=book._id%>/edit" class="btn btn-warning btn-lg btn-block">Edit</a>

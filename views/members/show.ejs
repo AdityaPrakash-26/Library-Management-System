@@ -39,12 +39,12 @@
 
                 <div class="container">
                     <div class="row">
-                        <h3>Member Actions</h3>
+                        <h2>Member Actions</h2>
                         <div class="col-md-3">
                             <a href="/members/<%=member._id%>/edit" class="btn btn-warning btn-lg btn-block">Edit</a>
                         </div>
                         <div class="col-md-3">
-                            <a href="/members" class="btn btn-primary btn-lg btn-block">Go back</a>
+                            <a href="/members/<%=member._id%>/clear" class="btn btn-warning btn-lg btn-block">Clear Debt</a>
                         </div>
                         <!-- button to delete the member -->
                         <div class="col-md-3">
@@ -52,14 +52,17 @@
                                 <button class="btn btn-danger btn-lg btn-block">Delete this member</button>
                             </form>
                         </div>
+                        <div class="col-md-3">
+                            <a href="/members" class="btn btn-primary btn-lg btn-block">Go back</a>
+                        </div>
                     </div>
                     <h2>Book actions:</h2>
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <a href="/members/<%=member._id%>/issue" class="btn btn-primary btn-lg btn-block">Issue a
                                 book to the member</a>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <a href="/members/<%=member._id%>/return" class="btn btn-primary btn-lg btn-block">Return a book from the member</a>
                         </div>
                     </div>
