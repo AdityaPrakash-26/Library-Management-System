@@ -10,6 +10,7 @@
     </head>
     <body>
     <div class = "container">
+        <h1>Add a new Book</h1>
         <form action = "/books" method = "POST">
             <div>
                 <label for = "title">Title:</label>
@@ -64,14 +65,11 @@
                 <input type="number" id = "rent" name = "book[rent]">
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <button class="btn btn-success btn-lg btn-block">Create Book</button>
             </div>
-            <div class="col-md-4">
-                <a href="/books" class="btn btn-primary btn-lg btn-block">Back to Book List</a>
-            </div>
-            <div class="col-md-4">
-                <a href="/" class="btn btn-primary btn-lg btn-block">Back to Homepage</a>
+            <div class="col-md-6">
+                <a href="/books" class="btn btn-primary btn-lg btn-block">Go Back</a>
             </div>
         </form>
     </div>

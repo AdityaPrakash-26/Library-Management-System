@@ -16,36 +16,40 @@
     <body class="d-flex text-white bg-dark">
         <div class="container">
             <h1>Choose books to issue to <%=member.name%></h1>
-            <!-- If the quantity of a book is greater than one, display it as an option -->
-            <form action="/members/<%=member._id%>/issue?_method=PUT" method="POST">
-                <ul>
-                    <% for(let book of books) { %>
-                        <% if(book.quantity_in_library >= 1) { %>
-                            <li>
-                                <!-- check if member already owns the book -->
-                                <% if(member.books.includes(book._id)) { %>
-                                    <input type="checkbox" name="books[]" value="<%=book._id%>" checked>
-                                <% } %>
-                                <% else if(500 - member.debt >= book.rent){%>
-                                    <input type="checkbox" name="books[]" value="<%= book._id %>">
-                                    <%= book.title %>
-                                <% } else {%>
-                                    <input type="checkbox" disabled name="books[]" value="<%= book._id %>">
-                                    <%= book.title %>
-                                    <span class="text-danger">(Debt limit exceeded)</span>
-                                <% } %> 
-                            </li>
+            <!-- If there are no books in the library, do not display the list -->
+            <% if (books.length > 0) { %>
+                <!-- If the quantity of a book is greater than one, display it as an option -->
+                <form action="/members/<%=member._id%>/issue?_method=PUT" method="POST">
+                    <ul>
+                        <% for(let book of books) { %>
+                            <% if(book.quantity_in_library >= 1) { %>
+                                <li>
+                                    <!-- check if member already owns the book -->
+                                    <% if(member.books.includes(book._id)) { %>
+                                        <input type="checkbox" name="books[]" value="<%=book._id%>" checked>
+                                    <% } else if(500 - member.debt >= book.rent){ %>
+                                        <input type="checkbox" name="books[]" value="<%= book._id %>">
+                                        <%= book.title %>
+                                    <% } else { %>
+                                        <input type="checkbox" disabled name="books[]" value="<%= book._id %>">
+                                        <%= book.title %>
+                                        <span class="text-danger">(Debt limit exceeded)</span>
+                                    <% } %> 
+                                </li>
+                            <% } %>
                         <% } %>
-                    <% } %>
-                        </ul>
-                
-                <div class="col-md-6">
-                    <button class="btn btn-success btn-lg btn-block">Issue Book</button>
-                </div>
-                <div class="col-md-6">
-                    <a href="/members/<%=member._id%>" class="btn btn-primary btn-lg btn-block">Go Back</a>
-                </div>
-            </form>
+                            </ul>
+                    
+                    <div class="col-md-6">
+                        <button class="btn btn-success btn-lg btn-block">Issue Book</button>
+                    </div>
+                </form>
+            <% } else { %>
+                <p>No books to issue</p>
+            <% } %>
+            <div class="col-md-6">
+                <a href="/members/<%=member._id%>" class="btn btn-primary btn-lg btn-block">Go Back</a>
+            </div>
     </body>
 </body>
 

@@ -14,7 +14,8 @@ const BookSchema = mongoose.Schema({
     publisher: String,
     quantity_total: {type: Number, default: 1},
     quantity_in_library: {type: Number, default: 1},
-    rent: {type: Number, default: 50}
+    rent: {type: Number, default: 50},
+    times_borrowed: {type: Number, default: 0}
 });
 
 const Book = mongoose.model('Book', BookSchema);

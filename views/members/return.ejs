@@ -16,23 +16,28 @@
     <body class="d-flex text-white bg-dark">
         <div class="container">
             <h1>Choose a book to take back from <%=member.name%></h1>
-            <!-- display all books the member currently has -->
-            <form action="/members/<%=member._id%>/return?_method=PUT" method="POST">
-                <ul>
-                    <% for (var i = 0; i < member.books.length; i++) { %>
-                    <li>
-                        <input type="checkbox" name="books[]" value="<%=member.books[i]._id%>">
-                        <%=member.books[i].title%>
-                    </li>
-                    <% } %>
-                </ul>
-                <div class="col-md-6">
-                    <button class="btn btn-success btn-lg btn-block">Return Book</button>
-                </div>
-                <div class="col-md-6">
-                    <a href="/members/<%=member._id%>" class="btn btn-primary btn-lg btn-block">Go Back</a>
-                </div>
-            </form>
+            <!-- If the member holds a book -->
+            <% if (member.books.length > 0) { %>
+                <!-- display all books the member currently has -->
+                <form action="/members/<%=member._id%>/return?_method=PUT" method="POST">
+                    <ul>
+                        <% for (var i = 0; i < member.books.length; i++) { %>
+                        <li>
+                            <input type="checkbox" name="books[]" value="<%=member.books[i]._id%>">
+                            <%=member.books[i].title%>
+                        </li>
+                        <% } %>
+                    </ul>
+                    <div class="col-md-6">
+                        <button class="btn btn-success btn-lg btn-block">Return Book</button>
+                    </div>
+                </form>
+            <% } else { %>
+                <p>This member does not have any books.</p>
+            <% } %>
+            <div class="col-md-6">
+                <a href="/members/<%=member._id%>" class="btn btn-primary btn-lg btn-block">Go Back</a>
+            </div>
     </body>
 </body>
 

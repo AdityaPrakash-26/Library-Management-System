@@ -6,7 +6,8 @@ const MemberSchema = mongoose.Schema({
     age: Number,
     phone: Number,
     debt: {type: Number, default: '0'},
-    books: [Book.schema]
+    books: [Book.schema],
+    total_amount_paid: {type: Number, default: '0'}
 });
 
 const Member = mongoose.model('Member', MemberSchema);

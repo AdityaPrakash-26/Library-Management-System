@@ -14,15 +14,12 @@
 <body>
     <div class="container">
         <h1>Details:</h1>
-        <h3>Name: <%=member.name%>
-        </h3>
-        <h3>Age: <%=member.age%>
-        </h3>
-        <h3>Phone No.: <%=member.phone%>
-        </h3>
-        <h3>Debt: <%=member.debt%>
-        </h3>
-        <h3>Books currently held:</h3>
+        <h3>Name: <%=member.name%> </h3>
+        <h3>Age: <%=member.age%> </h3>
+        <h3>Phone No.: <%=member.phone%> </h3>
+        <h3>Debt: <%=member.debt%> </h3>
+        <h3>Total Amount Paid: <%=member.total_amount_paid%></h3>
+        <h3>Books currently held: </h3>
         <!-- if books are held, print the books -->
         <ul>
             <% member.books.forEach(function(book){ %>
@@ -44,7 +41,8 @@
                             <a href="/members/<%=member._id%>/edit" class="btn btn-warning btn-lg btn-block">Edit</a>
                         </div>
                         <div class="col-md-3">
-                            <a href="/members/<%=member._id%>/clear" class="btn btn-warning btn-lg btn-block">Clear Debt</a>
+                            <a href="/members/<%=member._id%>/clear" class="btn btn-warning btn-lg btn-block">Clear
+                                Debt</a>
                         </div>
                         <!-- button to delete the member -->
                         <div class="col-md-3">
@@ -63,7 +61,8 @@
                                 book to the member</a>
                         </div>
                         <div class="col-md-6">
-                            <a href="/members/<%=member._id%>/return" class="btn btn-primary btn-lg btn-block">Return a book from the member</a>
+                            <a href="/members/<%=member._id%>/return" class="btn btn-primary btn-lg btn-block">Return a
+                                book from the member</a>
                         </div>
                     </div>
                 </div>
