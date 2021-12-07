@@ -1,5 +1,3 @@
-// TO DO ADD AN OPTION TO SPECIFY HOW MANY BOOKS ONE WANTS TO IMPORT
-
 // Requiring module
 const express = require('express');
 const path = require('path');
@@ -75,11 +73,16 @@ app.post('/books/import', async (req, res) => {
     var isbn = req.body.book.isbn;
     var publisher = req.body.book.publisher;
     var page = req.body.book.page;
+    var numberOfBooks = req.body.book.numberOfBooks;
+
+    if(!numberOfBooks) {
+        numberOfBooks = 20;
+    }
 
     // store the transaction
     const transaction = new Transaction({
         type: 'import',
-        message: `${title} was imported`
+        message: `Books were imported using Frappe's API.`
     });
     await transaction.save();
 
@@ -112,9 +115,14 @@ app.post('/books/import', async (req, res) => {
             // loop through the books
             books.forEach(async book => {
                 // create a new book
-                const newBook = new Book(book);
-                // save the book
-                await newBook.save();
+                if(numberOfBooks > 0) {
+                    numberOfBooks--;
+                    const newBook = new Book(book);
+                    // save the book
+                    await newBook.save();
+                } else {
+                    return;
+                }
             })
             res.redirect(/books/);
         })
