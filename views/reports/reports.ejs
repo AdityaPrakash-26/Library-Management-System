@@ -28,6 +28,23 @@
                         <li> <a href="/books/<%=book._id%>"><%=book.title%></a> - Borrowed <%=book.times_borrowed%> times. </li>
                     <% } %>
                 </ul>
+
+                <h3>Most Paying Members:</h3>
+                <% var membersList = []; %>
+                <!-- push the members which have borrowed at least once -->
+                <% for(let member of members){ %>
+                    <% if(member.total_amount_paid >= 1){ %>
+                        <% membersList.push(member); %>
+                    <% } %>
+                <% } %>
+
+                <% membersList.sort((a,b) => b.total_amount_paid - a.total_amount_paid); %>
+
+                <ul>
+                    <% for(let member of membersList){ %>
+                        <li> <a href="/members/<%=member._id%>"><%=member.name%></a> - Paid Rs. <%=member.total_amount_paid%> </li>
+                    <% } %>
+                </ul>
                 <div class="col-md-6">
                     <a href="/" class="btn btn-primary btn-lg btn-block">Go back</a>
                 </div>

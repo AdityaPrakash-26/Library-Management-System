@@ -385,7 +385,8 @@ app.get('/transactions/delete', async(req, res) => {
 
 app.get('/reports', async (req, res) => {
     const books = await Book.find({});
-    res.render(__dirname + '/views/reports/reports.ejs', {books});
+    const members = await Member.find({});
+    res.render(__dirname + '/views/reports/reports.ejs', {books, members});
 })
 
 // AXIOS ROUTES BEGIN
